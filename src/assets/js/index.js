@@ -7,7 +7,7 @@ var i=-1,j=1;
 data.forEach((item, index) => {
     const itemLi = document.createElement('li');
     itemLi.classList.add('item');
-    itemLi.style.backgroundImage = `url(img/${item.image})`;
+    itemLi.style.backgroundImage = `url(images/${item.image})`;
     itemLi.style.backgroundSize = 'cover';
     itemLi.innerHTML = `
         <div class="content">
