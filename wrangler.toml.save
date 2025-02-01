@@ -1,0 +1,10 @@
+name = "simplepage"
+type = "javascript"
+
+account_id = "votre-account-id"
+workers_dev = true
+compatibility_date = "2025-01-31"
+
+[env.production]
+zone_id = "votre-zone-id"
+route = "votre-domaine.com/*"

@@ -110,9 +110,6 @@ main {
 .prev{
   display: none;
 }
-.next{
-  display: none;
-}
 
 .nav {
   position: absolute;

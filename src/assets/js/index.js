@@ -19,31 +19,54 @@ data.forEach((item, index) => {
     console.log(index);
 });
 
-function activate(e) {
+/*function activate(e) {
     const items = document.querySelectorAll('.item');
-    e.target.matches('.next') && slider.append(items[0]);
-    e.target.matches('.prev') && slider.prepend(items[items.length - 1]);
+    if(j+1<7) e.target.matches('.next') && slider.append(items[0]);
+    //e.target.matches('.prev') && slider.prepend(items[items.length - 1]);
     const a = new AutoWriter(`mess${j}`,data[j].message,120);
     a.start();
-}
+}*/
+
+
 document.querySelector(".next").addEventListener('click',function(){
-    j = (j+1)>5?0:j+1;
+    if(j!=0 && j+1<=5) {j++;slider.append(slider.firstElementChild);} else if(j==5){
+        const a = new AutoWriter(`mess${0}`,data[0].message,120);
+        a.start();
+        slider.append(slider.firstElementChild);
+        j=10;
+        document.getElementById("next").style.display="none";
+    }
+    if(j!=10){
+        const a = new AutoWriter(`mess${j}`,data[j].message,120);
+        a.start();
+    }
+    console.log(j);
 });
-document.querySelector(".prev").addEventListener('click',function(){
+/*document.querySelector(".prev").addEventListener('click',function(){
     j = (j-1)<0?5:j-1;
-});
+});*/
+
 // handle click event
-document.addEventListener('click', activate, false);
+//document.addEventListener('click', activate, false);
 
 // handle keyboard event
 document.addEventListener('keydown', function (e) {
+    e.preventDefault();
     if (e.key === 'ArrowLeft') {
-        j = (j-1)<0?5:j-1;
-        slider.prepend(slider.lastElementChild);
+        //j = (j-1)<0?5:j-1;
+        //slider.prepend(slider.lastElementChild);
     } else if (e.key === 'ArrowRight') {
-        j = (j+1)>5?0:j+1;
-        slider.append(slider.firstElementChild);
+        if(j!=0 && j+1<=5){ j++; slider.append(slider.firstElementChild)} 
+        else if(j==5) {
+            slider.append(slider.firstElementChild);
+            const a = new AutoWriter(`mess${0}`,data[0].message,120);
+            a.start();
+            j=10;
+            document.getElementById("next").style.display="none";
+        }
     }
-    const a = new AutoWriter(`mess${j}`,data[j].message,120);
-    a.start();
+    if(j!=10){
+        const a = new AutoWriter(`mess${j}`,data[j].message,120);
+        a.start();
+    }
 });
